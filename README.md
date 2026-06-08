@@ -42,5 +42,5 @@ Built with a focus on administrative governance, operational precision, and cust
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/YOUR-USERNAME/sante-diagnostics-lims.git](https://github.com/YOUR-USERNAME/sante-diagnostics-lims.git)
-cd sante-diagnostics-lims
+git clone https://github.com/daniel-ezinna/medLabTest  
+cd medLabTest
