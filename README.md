@@ -1,3 +1,12 @@
+<img width="1016" height="791" alt="image" src="https://github.com/user-attachments/assets/420f795c-a2f7-4f8c-97be-b1701e5a63f5" />
+<img width="1021" height="794" alt="image" src="https://github.com/user-attachments/assets/e9e1134f-2b0f-4063-931a-10e972724d69" />
+
+
+
+
+
+
+
 # ⬡ Sante Diagnostics LIMS
 
 A robust, JavaFX-based Laboratory Information Management System (LIMS) engineered to digitalize medical laboratory operations. This desktop application replaces paper-based workflows by providing secure, role-based portals for administrators, laboratory staff, and patients. 
