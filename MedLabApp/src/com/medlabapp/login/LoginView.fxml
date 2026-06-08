@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ToggleButton?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.medlabapp.login.LoginController">
+    <center>
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="50" left="50" right="50" top="50"/>
+            </padding>
+            <VBox styleClass="card" alignment="CENTER" maxWidth="400" spacing="15">
+                <padding>
+                    <Insets bottom="30" left="30" right="30" top="30"/>
+                </padding>
+                <VBox alignment="CENTER" spacing="5">
+                    <Label text="⬡" styleClass="text-subheader"
+                           style="-fx-text-fill: #2E7D32; -fx-font-size: 36px;"/>
+                    <Label text="Sante Diagnostics LIMS"
+                           style="-fx-font-weight: bold; -fx-text-fill: #212529; -fx-font-size: 20px;"/>
+                </VBox>
+                <Label styleClass="text-header" text="Sign In"/>
+                <Label styleClass="text-muted" text="Welcome back! Please enter your credentials below."/>
+                <TextField fx:id="emailField" promptText="Your email address" styleClass="text-field"/>
+                <StackPane alignment="CENTER_RIGHT">
+    <PasswordField fx:id="passwordField" promptText="Your secure password" styleClass="text-field"/>
+    
+    <TextField fx:id="passwordTextField" promptText="Your secure password" styleClass="text-field" visible="false"/>
+    
+    <ToggleButton fx:id="togglePasswordBtn" text="👁" 
+                  style="-fx-background-color: transparent; -fx-text-fill: #6C757D; -fx-cursor: hand;" 
+                  onAction="#togglePasswordVisibility"/>
+</StackPane>
+                <Label fx:id="errorLabel" styleClass="text-danger" text="" wrapText="true" minHeight="25"/>
+                <Button maxWidth="1.7976931348623157E308" onAction="#handleLogin"
+                        styleClass="button-primary" text="Login"/>
+                <HBox alignment="CENTER" spacing="15">
+                    <!-- [UPDATED] Forgot Password button now wired to handleForgotPassword -->
+                    <Button styleClass="button-secondary" style="-fx-padding: 8px 15px;"
+                            text="Forgot Password?" onAction="#handleForgotPassword"/>
+                    <!-- [UPDATED] Self-Register button wired to handleSelfRegister -->
+                    <Button styleClass="button-secondary" style="-fx-padding: 8px 15px;"
+                            text="Self-Register" onAction="#handleSelfRegister"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="768.0" prefWidth="1024.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.medlabapp.modules.customer.CustomerController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: #FFFFFF; -fx-padding: 15px 30px;
+                     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <Label text="⬡" style="-fx-text-fill: #2E7D32; -fx-font-size: 28px;"/>
+            <Label text="Sante Diagnostics | Patient Portal" styleClass="text-subheader"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="welcomeLabel" text="Welcome, Patient"
+                   style="-fx-text-fill: #495057; -fx-font-weight: bold;"/>
+            <Button text="Logout" styleClass="button-secondary" onAction="#handleLogout"/>
+        </HBox>
+    </top>
+
+     <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" style="-fx-padding: 20px;">
+
+             <Tab text="My Dashboard">
+                <VBox spacing="15" style="-fx-padding: 10px;">
+
+                    <Label text="Your Test Requests" styleClass="card-title"/>
+
+                    <!-- Dashboard table -->
+                    <TableView fx:id="dashboardTable" VBox.vgrow="ALWAYS" styleClass="card">
+                        <columns>
+                            <TableColumn fx:id="dashReqIdCol"    text="Req #"          prefWidth="60"/>
+                            <TableColumn fx:id="dashTestNameCol" text="Test"            prefWidth="180"/>
+                            <TableColumn fx:id="dashPaymentCol"  text="Payment"         prefWidth="100"/>
+                            <TableColumn fx:id="dashStatusCol"   text="Sample Status"   prefWidth="130"/>
+                            <TableColumn fx:id="dashDeadlineCol" text="Deadline"        prefWidth="160"/>
+                            <TableColumn fx:id="dashCountdownCol" text="Time Remaining" prefWidth="150"/>
+                            <TableColumn fx:id="dashResultCol"   text="Result Ready"    prefWidth="110"/>
+                        </columns>
+                    </TableView>
+
+                    <HBox alignment="CENTER_RIGHT">
+                        <Button text="Refresh Dashboard" styleClass="button-secondary"
+                                onAction="#handleRefreshDashboard"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <Tab text="Browse &amp; Order Tests">
+                <HBox spacing="20" style="-fx-padding: 10px;">
+
+                    <!-- Left: test catalog table -->
+                    <VBox spacing="10" styleClass="card" HBox.hgrow="ALWAYS">
+                        <Label text="Available Tests" styleClass="card-title"/>
+                        <TableView fx:id="testsTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="testNameCol"   text="Test Name"       prefWidth="200"/>
+                                <TableColumn fx:id="testPriceCol"  text="Price (₦)"       prefWidth="110"/>
+                                <TableColumn fx:id="testTatCol"    text="TAT (Hrs)"       prefWidth="90"/>
+                                <TableColumn fx:id="testFormatCol" text="Result Format"   prefWidth="120"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+
+                    <VBox spacing="15" styleClass="card" prefWidth="300">
+                        <Label text="Place an Order" styleClass="card-title"/>
+                        <Label text="Select a test from the table, then click the button below to place your order."
+                               styleClass="text-muted" wrapText="true"/>
+
+                        <Label fx:id="selectedTestLabel"
+                               text="No test selected"
+                               style="-fx-font-weight: bold; -fx-text-fill: #2E7D32;"
+                               wrapText="true"/>
+
+                        <Label fx:id="orderMessageLabel" styleClass="text-danger" text="" wrapText="true" minHeight="25"/>
+
+                        <Button text="Place Order for Selected Test"
+                                maxWidth="1.7976931348623157E308"
+                                styleClass="button-primary"
+                                onAction="#handlePlaceOrder"/>
+
+                         <VBox fx:id="bankDetailsBox" spacing="8" managed="false" visible="false"
+                              style="-fx-background-color: #F1F8F1; -fx-background-radius: 8px; -fx-padding: 12px;">
+                            <Label text="Payment Instructions" style="-fx-font-weight: bold; -fx-text-fill: #2E7D32;"/>
+                            <Label text="Please transfer the exact amount to:" styleClass="text-muted" wrapText="true"/>
+                            <Label text="Bank: First Bank Nigeria" styleClass="text-muted"/>
+                            <Label text="Account Name: Sante Diagnostics Ltd" styleClass="text-muted"/>
+                            <Label text="Account Number: 3012345678" styleClass="text-muted"/>
+                            <Label fx:id="bankAmountLabel" text="Amount: ₦0.00"
+                                   style="-fx-font-weight: bold; -fx-text-fill: #212529;"/>
+                            <Label text="Use your name as the payment reference." styleClass="text-muted" wrapText="true"/>
+                        </VBox>
+                    </VBox>
+                </HBox>
+            </Tab>
+
+             <Tab text="My Results">
+                <VBox spacing="15" style="-fx-padding: 10px;">
+
+                    <Label text="Validated Results" styleClass="card-title"/>
+                    <Label text="Only results that have been reviewed and validated by the lab are shown here."
+                           styleClass="text-muted"/>
+
+        <TableView fx:id="resultsTable" VBox.vgrow="ALWAYS" styleClass="card">
+                        <columns>
+                            <TableColumn fx:id="resReqIdCol"   text="Req #"       prefWidth="60"/>
+                            <TableColumn fx:id="resTestCol"    text="Test"         prefWidth="200"/>
+                            <TableColumn fx:id="resFormatCol"  text="Format"       prefWidth="100"/>
+                            <TableColumn fx:id="resDateCol"    text="Date"         prefWidth="160"/>
+                        </columns>
+                    </TableView>
+
+                     <HBox spacing="12" alignment="CENTER_RIGHT">
+                        <Button text="Download PDF Report"
+                                styleClass="button-primary"
+                                onAction="#handleDownloadPdf"/>
+                        <Button text="View Medical Image"
+                                styleClass="button-secondary"
+                                onAction="#handleViewImage"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+        </TabPane>
+    </center>
+</BorderPane>

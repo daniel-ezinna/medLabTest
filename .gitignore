@@ -1,0 +1,11 @@
+# NetBeans specific ignores
+/build/
+/nbproject/private/
+/nbproject/Makefile-*.properties
+
+# Ignore the compiled output jar, but KEEP the dist/lib/ folder so dependencies work
+/dist/*.jar
+
+# OS generated files
+.DS_Store
+Thumbs.db

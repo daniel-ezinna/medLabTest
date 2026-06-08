@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="560.0" prefWidth="620.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.medlabapp.modules.attendant.SampleDetailController">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: #FFFFFF; -fx-padding: 15px 30px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <Label text="⬡" style="-fx-text-fill: #2E7D32; -fx-font-size: 28px;" />
+            <Label fx:id="sampleIdLabel" text="Sample Detail" styleClass="text-subheader" />
+        </HBox>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background-color: #F8F9FA; -fx-border-width: 0;">
+            <content>
+                <VBox spacing="15" style="-fx-padding: 20px;">
+                    <HBox spacing="15">
+                        <VBox spacing="5" styleClass="card" HBox.hgrow="ALWAYS">
+                            <Label text="Current Status" styleClass="text-muted" />
+                            <Label fx:id="currentStatusLabel"
+                                   style="-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #2E7D32;" />
+                        </VBox>
+                        <VBox spacing="5" styleClass="card" HBox.hgrow="ALWAYS">
+                            <Label text="Patient Visibility" styleClass="text-muted" />
+                            <Label fx:id="verifiedLabel"
+                                   style="-fx-font-weight: bold; -fx-font-size: 13px;" />
+                        </VBox>
+                    </HBox>
+                    <VBox spacing="12" styleClass="card">
+                        <Label text="Sample Lifecycle" styleClass="card-title" />
+                        <Label text="Click a stage to update the sample status."
+                               styleClass="text-muted" />
+                        <HBox spacing="12" alignment="CENTER">
+                            <Button fx:id="btnCollected"
+                                    text="1. COLLECTED"
+                                    prefWidth="155"
+                                    styleClass="button-secondary"
+                                    onAction="#handleSetCollected" />
+                            <Label text="→"
+                                   style="-fx-font-size: 18px; -fx-text-fill: #ADB5BD;" />
+                            <Button fx:id="btnProcessing"
+                                    text="2. PROCESSING"
+                                    prefWidth="155"
+                                    styleClass="button-secondary"
+                                    onAction="#handleSetProcessing" />
+                            <Label text="→"
+                                   style="-fx-font-size: 18px; -fx-text-fill: #ADB5BD;" />
+                            <Button fx:id="btnValidated"
+                                    text="3. VALIDATED"
+                                    prefWidth="155"
+                                    styleClass="button-secondary"
+                                    onAction="#handleSetValidated" />
+                        </HBox>
+                    </VBox>
+                    <VBox spacing="12" styleClass="card">
+                        <Label text="Attach Result Files" styleClass="card-title" />
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="PDF Report:" prefWidth="110" />
+                            <Label fx:id="pdfPathLabel" text="(none)"
+                                   styleClass="text-muted"
+                                   HBox.hgrow="ALWAYS" />
+                            <Button text="Browse..."
+                                    styleClass="button-secondary"
+                                    onAction="#handleBrowsePdf" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Medical Image:" prefWidth="110" />
+                            <Label fx:id="imagePathLabel" text="(none)"
+                                   styleClass="text-muted"
+                                   HBox.hgrow="ALWAYS" />
+                            <Button text="Browse..."
+                                    styleClass="button-secondary"
+                                    onAction="#handleBrowseImage" />
+                        </HBox>
+
+                        <HBox alignment="CENTER_RIGHT">
+                            <Button text="Save Files to Record"
+                                    styleClass="button-primary"
+                                    onAction="#handleSaveFiles" />
+                        </HBox>
+                    </VBox>
+                    <VBox spacing="12" styleClass="card">
+                        <Label text="Result Verification Gate" styleClass="card-title" />
+                        <Label wrapText="true" styleClass="text-muted"
+                               text="Only verify after all files are attached and status is VALIDATED. Once verified the result is immediately visible to the patient." />
+                        <HBox alignment="CENTER">
+                            <Button text="Verify and Release to Patient"
+                                    styleClass="button-primary"
+                                    onAction="#handleVerifyResult" />
+                        </HBox>
+                    </VBox>
+                    <Label fx:id="messageLabel" wrapText="true" />
+
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT"
+              style="-fx-background-color: #FFFFFF;
+                     -fx-padding: 10px 20px;
+                     -fx-border-color: #DEE2E6;
+                     -fx-border-width: 1px 0 0 0;">
+            <Button text="Close"
+                    styleClass="button-secondary"
+                    onAction="#handleClose" />
+        </HBox>
+    </bottom>
+
+</BorderPane>

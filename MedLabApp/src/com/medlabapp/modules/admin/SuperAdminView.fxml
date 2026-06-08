@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.medlabapp.modules.admin.SuperAdminController">
+    
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #FFFFFF; -fx-padding: 15px 30px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <Label text="⬡" style="-fx-text-fill: #2E7D32; -fx-font-size: 28px;" />
+            <Label text="Sante Diagnostics | Super Admin Portal" styleClass="text-subheader" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Logout" styleClass="button-secondary" onAction="#handleLogout" />
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" style="-fx-padding: 20px;">
+            
+            <Tab text="Test Type Builder">
+                <HBox spacing="20" style="-fx-padding: 20px;">
+                    <VBox spacing="15" styleClass="card" prefWidth="350">
+                        <Label text="Define New Test" styleClass="card-title" />
+                        
+                        <TextField fx:id="testNameField" promptText="Test Name (e.g., Blood Panel)" styleClass="text-field" />
+                        <TextField fx:id="priceField" promptText="Price (₦)" styleClass="text-field" />
+                        <TextField fx:id="tatField" promptText="Turnaround Time (Hours)" styleClass="text-field" />
+                        <ComboBox fx:id="formatComboBox" promptText="Result Format" prefWidth="Infinity" styleClass="text-field" />
+                        
+                        <Label fx:id="testMessageLabel" styleClass="text-danger" />
+                        <HBox alignment="CENTER">
+                            <Button text="Save Test Type" styleClass="button-primary" style="-fx-padding: 10px 40px;" onAction="#handleCreateTest" />
+                        </HBox>
+                    </VBox>
+                    
+                    <VBox spacing="10" styleClass="card" HBox.hgrow="ALWAYS">
+                        <Label text="Available Tests" styleClass="card-title" />
+                        <TableView fx:id="testsTable" VBox.vgrow="ALWAYS" />
+                    </VBox>
+                </HBox>
+            </Tab>
+
+            <Tab text="Test Request Queue">
+                <VBox spacing="15" styleClass="card" style="-fx-padding: 20px; -fx-margin: 20px;">
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Pending &amp; Paid Requests" styleClass="card-title" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button text="Mark Selected as PAID" styleClass="button-primary" onAction="#handleMarkAsPaid" />
+                    </HBox>
+                    <TableView fx:id="requestsTable" VBox.vgrow="ALWAYS" />
+                </VBox>
+            </Tab>
+
+            <Tab text="Immutable Audit Trail">
+                <VBox spacing="15" styleClass="card" style="-fx-padding: 20px; -fx-margin: 20px;">
+                    <Label text="System Operations Log" styleClass="card-title" />
+                    <TableView fx:id="auditTable" VBox.vgrow="ALWAYS" />
+                </VBox>
+            </Tab>
+            
+            <Tab text="User Management">
+                <HBox spacing="20" style="-fx-padding: 20px;">
+                    <VBox spacing="15" styleClass="card" prefWidth="400">
+                        <Label text="Provision New Account" styleClass="card-title" />
+                        <Label text="Temporary password will be 'Welcome123!'" styleClass="text-muted" />
+                        
+                        <TextField fx:id="userNameField" promptText="Full Name" styleClass="text-field" />
+                        <TextField fx:id="userEmailField" promptText="Email Address" styleClass="text-field" />
+                        <ComboBox fx:id="userRoleComboBox" promptText="Select System Role" prefWidth="Infinity" styleClass="text-field" />
+                        
+                        <Label fx:id="userMessageLabel" styleClass="text-danger" />
+                        <HBox alignment="CENTER">
+                            <Button text="Create Account" styleClass="button-primary" style="-fx-padding: 10px 40px;" onAction="#handleCreateUser" />
+                        </HBox>
+                    </VBox>
+                    
+                    <VBox spacing="10" styleClass="card" HBox.hgrow="ALWAYS">
+                        <Label text="System Provisioning Guidelines" styleClass="card-title" />
+                        <Label text="• ALL accounts created here (Staff &amp; Customers) will be forced to change their password on first login." wrapText="true" style="-fx-padding: 5px 0;" />
+                        <Label text="• Customers created here bypass email verification." wrapText="true" style="-fx-padding: 5px 0;" />
+                        <Label text="• Default credentials for new users:" wrapText="true" style="-fx-padding: 15px 0 5px 0;" />
+                        <Label text="   Password: Welcome123!" style="-fx-font-weight: bold; -fx-text-fill: #2E7D32;" />
+                    </VBox>
+                </HBox>
+            </Tab>
+            
+        </TabPane>
+    </center>
+</BorderPane>

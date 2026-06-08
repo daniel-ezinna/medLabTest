@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="768.0" prefWidth="1024.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.medlabapp.modules.attendant.LabAttendantController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: #FFFFFF; -fx-padding: 15px 30px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <Label text="⬡" style="-fx-text-fill: #2E7D32; -fx-font-size: 28px;" />
+            <Label text="Sante Diagnostics | Lab Attendant Portal" styleClass="text-subheader" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Logout" styleClass="button-secondary" onAction="#handleLogout" />
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" style="-fx-padding: 20px;">
+
+            <Tab text="Test Request Queue">
+                <VBox spacing="15" styleClass="card" style="-fx-padding: 20px; -fx-margin: 20px;">
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Pending &amp; Active Requests" styleClass="card-title" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button text="Mark Selected as PAID" styleClass="button-primary" onAction="#handleMarkAsPaid" />
+                        <Button text="Initiate Sample" styleClass="button-primary" onAction="#handleInitiateSample" />
+                        <Button text="Open Sample Detail" styleClass="button-secondary" onAction="#handleOpenSampleDetail" />
+                    </HBox>
+                    <TableView fx:id="requestsTable" VBox.vgrow="ALWAYS" />
+                    <Label fx:id="queueMessageLabel" styleClass="text-danger" />
+                </VBox>
+            </Tab>
+            <Tab text="Create Patient Account">
+                <HBox spacing="20" style="-fx-padding: 20px;">
+
+                    <VBox spacing="15" styleClass="card" prefWidth="400">
+                        <Label text="Register New Patient" styleClass="card-title" />
+                        <Label text="Temporary password — patient must change on first login." styleClass="text-muted" />
+
+                        <TextField fx:id="newCustomerName" promptText="Full Name" styleClass="text-field" />
+                        <TextField fx:id="newCustomerEmail" promptText="Email Address" styleClass="text-field" />
+                        <PasswordField fx:id="newCustomerPassword" promptText="Temporary Password" styleClass="text-field" />
+
+                        <Label fx:id="createCustomerMessage" styleClass="text-danger" />
+                        <HBox alignment="CENTER">
+                            <Button text="Create Account" styleClass="button-primary" style="-fx-padding: 10px 40px;" onAction="#handleCreateCustomer" />
+                        </HBox>
+                    </VBox>
+
+                    <VBox spacing="10" styleClass="card" HBox.hgrow="ALWAYS">
+                        <Label text="System Provisioning Guidelines" styleClass="card-title" />
+                        <Label text="• Email is verified automatically — attendant confirms identity in person." wrapText="true" style="-fx-padding: 5px 0;" />                        
+                        <Label text="• Patients created here bypass email verification." wrapText="true" style="-fx-padding: 5px 0;" />
+                        <Label text="• The temporary password you set must be at least 6 characters." wrapText="true" style="-fx-padding: 15px 0 5px 0;" />
+                        <Label text="   Communicate credentials to the patient securely." style="-fx-font-weight: bold; -fx-text-fill: #2E7D32;" />
+                    </VBox>
+
+                </HBox>
+            </Tab>
+
+        </TabPane>
+    </center>
+</BorderPane>
